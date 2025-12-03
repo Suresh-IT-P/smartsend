@@ -36,6 +36,28 @@ function initBrevo() {
 let googleUserEmail = null;
 let deliveryResults = null;
 
+// DOM Elements (declared globally but initialized in DOMContentLoaded)
+let senderEmail;
+let googleLoginBtn;
+let googleLogoutBtn;
+let loginStatus;
+let recipients;
+let message;
+let sendBtn;
+let clearBtn;
+let clientsBtn;
+let clientsModal;
+let reportModal;
+let successBanner;
+let clientNameInput;
+let saveClientBtn;
+let clientsList;
+let reportTable;
+let sentCount;
+let failedCount;
+let newBatchBtn;
+let themeToggleBtn;
+
 // Notification System
 function showNotification(title, message, type = 'info', duration = 4000) {
   const container = document.getElementById('notificationContainer');
@@ -77,30 +99,52 @@ function showNotification(title, message, type = 'info', duration = 4000) {
   return notification;
 }
 
-// DOM Elements
-const senderEmail = document.getElementById('senderEmail');
-const googleLoginBtn = document.getElementById('googleLoginBtn');
-const googleLogoutBtn = document.getElementById('googleLogoutBtn');
-const loginStatus = document.getElementById('loginStatus');
-const recipients = document.getElementById('recipients');
-const message = document.getElementById('message');
-const sendBtn = document.getElementById('sendBtn');
-const clearBtn = document.getElementById('clearBtn');
-const clientsBtn = document.getElementById('clientsBtn');
-const clientsModal = document.getElementById('clientsModal');
-const reportModal = document.getElementById('reportModal');
-const successBanner = document.getElementById('successBanner');
-const clientNameInput = document.getElementById('clientNameInput');
-const saveClientBtn = document.getElementById('saveClientBtn');
-const clientsList = document.getElementById('clientsList');
-const reportTable = document.getElementById('reportTable');
-const sentCount = document.getElementById('sentCount');
-const failedCount = document.getElementById('failedCount');
-const newBatchBtn = document.getElementById('newBatchBtn');
-const themeToggleBtn = document.getElementById('themeToggleBtn');
-
 // Initialize
 document.addEventListener('DOMContentLoaded', async () => {
+  // Initialize DOM Elements
+  window.senderEmail = document.getElementById('senderEmail');
+  window.googleLoginBtn = document.getElementById('googleLoginBtn');
+  window.googleLogoutBtn = document.getElementById('googleLogoutBtn');
+  window.loginStatus = document.getElementById('loginStatus');
+  window.recipients = document.getElementById('recipients');
+  window.message = document.getElementById('message');
+  window.sendBtn = document.getElementById('sendBtn');
+  window.clearBtn = document.getElementById('clearBtn');
+  window.clientsBtn = document.getElementById('clientsBtn');
+  window.clientsModal = document.getElementById('clientsModal');
+  window.reportModal = document.getElementById('reportModal');
+  window.successBanner = document.getElementById('successBanner');
+  window.clientNameInput = document.getElementById('clientNameInput');
+  window.saveClientBtn = document.getElementById('saveClientBtn');
+  window.clientsList = document.getElementById('clientsList');
+  window.reportTable = document.getElementById('reportTable');
+  window.sentCount = document.getElementById('sentCount');
+  window.failedCount = document.getElementById('failedCount');
+  window.newBatchBtn = document.getElementById('newBatchBtn');
+  window.themeToggleBtn = document.getElementById('themeToggleBtn');
+
+  // Assign to local variables for easier access
+  senderEmail = window.senderEmail;
+  googleLoginBtn = window.googleLoginBtn;
+  googleLogoutBtn = window.googleLogoutBtn;
+  loginStatus = window.loginStatus;
+  recipients = window.recipients;
+  message = window.message;
+  sendBtn = window.sendBtn;
+  clearBtn = window.clearBtn;
+  clientsBtn = window.clientsBtn;
+  clientsModal = window.clientsModal;
+  reportModal = window.reportModal;
+  successBanner = window.successBanner;
+  clientNameInput = window.clientNameInput;
+  saveClientBtn = window.saveClientBtn;
+  clientsList = window.clientsList;
+  reportTable = window.reportTable;
+  sentCount = window.sentCount;
+  failedCount = window.failedCount;
+  newBatchBtn = window.newBatchBtn;
+  themeToggleBtn = window.themeToggleBtn;
+
   // Load environment variables
   await loadEnv();
 
