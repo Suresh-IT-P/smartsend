@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Send</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Notification Toast Container -->
+  <div id="notificationContainer" class="notification-container"></div>
+
+  <div class="container">
+    <div class="header">
+      <div class="header-left">
+        <h1>SMART SEND</h1>
+        <p>Send emails to multiple recipients</p>
+      </div>
+      <div class="header-actions">
+        <button id="themeToggleBtn" class="btn-secondary" title="Toggle theme">🌙 Theme</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <!-- Google Login Section -->
+      <div class="form-group">
+        <label>Sender Email</label>
+        <div class="auth-container">
+          <input type="email" id="senderEmail" disabled value="Not logged in" />
+          <button class="btn-primary btn-google" id="googleLoginBtn">Google Login</button>
+          <button class="btn-danger hidden" id="googleLogoutBtn">Logout</button>
+        </div>
+        <div id="loginStatus" class="email-badge">Click Google Login to authenticate</div>
+      </div>
+
+      <!-- Recipients Section -->
+      <div class="form-group">
+        <label>Recipients</label>
+        <textarea id="recipients" placeholder=""></textarea>
+        <div class="button-group">
+          <button class="btn-secondary" id="clientsBtn">📋 CLIENTS</button>
+          <button class="btn-danger" id="clearBtn">🗑️ CLEAR</button>
+        </div>
+      </div>
+
+      <!-- Message Section -->
+      <div class="form-group">
+        <label>Message</label>
+        <textarea id="message"></textarea>
+      </div>
+
+
+
+      <!-- Send Button -->
+      <button class="btn-success" id="sendBtn" style="width: 100%; padding: 15px; font-size: 1.1em;">
+        📧 SEND EMAILS
+      </button>
+    </div>
+  </div>
+
+  <!-- Clients Modal -->
+  <div id="clientsModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Client Management</h2>
+        <button class="close-btn" id="closeClientsModal">&times;</button>
+      </div>
+
+      <div class="form-group">
+        <label>Save Recipients as Client</label>
+        <input type="text" id="clientNameInput" placeholder="" />
+        <button class="btn-secondary" id="saveClientBtn" style="width: 100%; margin-top: 10px;">Save Client</button>
+      </div>
+
+      <hr style="border: none; border-top: 1px solid #444; margin: 20px 0;">
+
+      <h3 style="margin-bottom: 15px;">Saved Clients</h3>
+      <div id="clientsList"></div>
+    </div>
+  </div>
+
+  <!-- Report Modal -->
+  <div id="reportModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Delivery Report</h2>
+        <button class="close-btn" id="closeReportModal">&times;</button>
+      </div>
+
+      <div style="text-align: center; margin-bottom: 20px;">
+        <p style="font-size: 1.1em;">
+          <span id="sentCount">0</span> sent • <span id="failedCount">0</span> failed
+        </p>
+      </div>
+
+      <table class="report-table">
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="reportTable"></tbody>
+      </table>
+
+      <div class="button-group">
+        <button class="btn-secondary" id="newBatchBtn">New Batch</button>
+        <button class="btn-primary" id="closeReportBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
